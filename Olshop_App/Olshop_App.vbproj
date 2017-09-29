@@ -73,6 +73,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -106,6 +107,30 @@
       <DependentUpon>InputBoxForm.vb</DependentUpon>
     </Compile>
     <Compile Include="InputBoxForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner\LaporanLoginForm.Designer.vb">
+      <DependentUpon>LaporanLoginForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Owner\LaporanLoginForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner\LaporanPembelianForm.Designer.vb">
+      <DependentUpon>LaporanPembelianForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Owner\LaporanPembelianForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner\LaporanPenjualanForm.Designer.vb">
+      <DependentUpon>LaporanPenjualanForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Owner\LaporanPenjualanForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Owner\LaporanStokBarang.Designer.vb">
+      <DependentUpon>LaporanStokBarang.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Owner\LaporanStokBarang.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Petugas\DetailOrderFormPetugas.Designer.vb">
@@ -226,6 +251,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InputBoxForm.resx">
       <DependentUpon>InputBoxForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner\LaporanLoginForm.resx">
+      <DependentUpon>LaporanLoginForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner\LaporanPembelianForm.resx">
+      <DependentUpon>LaporanPembelianForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner\LaporanPenjualanForm.resx">
+      <DependentUpon>LaporanPenjualanForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner\LaporanStokBarang.resx">
+      <DependentUpon>LaporanStokBarang.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Petugas\DetailOrderFormPetugas.resx">
       <DependentUpon>DetailOrderFormPetugas.vb</DependentUpon>

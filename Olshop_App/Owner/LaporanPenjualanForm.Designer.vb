@@ -25,15 +25,20 @@ Partial Class LaporanPenjualanForm
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(12, 72)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(542, 401)
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.Size = New System.Drawing.Size(552, 401)
         Me.DataGridView1.TabIndex = 0
         '
         'Label8
@@ -41,7 +46,7 @@ Partial Class LaporanPenjualanForm
         Me.Label8.BackColor = System.Drawing.Color.DarkCyan
         Me.Label8.Font = New System.Drawing.Font("Gill Sans MT", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label8.Location = New System.Drawing.Point(-8, -1)
+        Me.Label8.Location = New System.Drawing.Point(-5, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(582, 59)
         Me.Label8.TabIndex = 9
@@ -50,18 +55,22 @@ Partial Class LaporanPenjualanForm
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(444, 479)
+        Me.Button1.Location = New System.Drawing.Point(454, 476)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(110, 43)
         Me.Button1.TabIndex = 10
         Me.Button1.Text = "Print"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
         'LaporanPenjualanForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(566, 531)
+        Me.ClientSize = New System.Drawing.Size(572, 531)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.DataGridView1)
@@ -75,4 +84,5 @@ Partial Class LaporanPenjualanForm
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents Label8 As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents PrintDialog1 As PrintDialog
 End Class

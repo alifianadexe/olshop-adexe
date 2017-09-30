@@ -133,6 +133,12 @@
     <Compile Include="Owner\LaporanStokBarang.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Owner\NavigationOwner.Designer.vb">
+      <DependentUpon>NavigationOwner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Owner\NavigationOwner.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Petugas\DetailOrderFormPetugas.Designer.vb">
       <DependentUpon>DetailOrderFormPetugas.vb</DependentUpon>
     </Compile>
@@ -263,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Owner\LaporanStokBarang.resx">
       <DependentUpon>LaporanStokBarang.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Owner\NavigationOwner.resx">
+      <DependentUpon>NavigationOwner.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Petugas\DetailOrderFormPetugas.resx">
       <DependentUpon>DetailOrderFormPetugas.vb</DependentUpon>

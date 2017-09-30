@@ -3,6 +3,15 @@
     Dim rd As SqlClient.SqlDataReader
     Dim fcn As New FunctionClass
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
+    End Sub
+
     Private Sub login_Click(sender As Object, e As EventArgs) Handles btn_login.Click
         Dim sql As String = "SELECT * FROM tbl_login WHERE username='" + Me.txt_username.Text + "'"
         Dim cmnd As New SqlClient.SqlCommand(sql, conn)
@@ -22,12 +31,17 @@
                     Me.Hide()
                 ElseIf rd.Item("status") = "Petugas" Then
                     Dim navus As New NavigationPetugas()
+
                     navus.Tag = rd.Item("id_petugas")
                     rd.Close()
+
                     navus.lbl_log.Text = insertLog()
 
                     navus.Show()
                     Me.Hide()
+                ElseIf rd.Item("status") = "Owner" Then
+                    rd.Close()
+                    NavigationOwner.Show()
                 End If
             Else
                 MessageBox.Show("Maaf , Password Salah")

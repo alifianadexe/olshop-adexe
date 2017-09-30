@@ -7,8 +7,8 @@ Public Class LaporanLoginForm
         conn.ConnectionString = generateString()
         conn.Open()
 
-        Dim sql As String = "SELECT id_log , username, jabatan , nama_depan, tanggal_login, tanggal_logout FROM (( tbl_log INNER JOIN tbl_login ON tbl_login.username = tbl_log.username) INNER JOIN tbl_petugas ON tbl_login.id_petugas = tbl_petugas.id_petugas)"
-        Dim adapter As New SqlClient.SqlDataAdapter
+        Dim sql As String = "SELECT id_log , tbl_login.username as [Username], jabatan , nama_depan, tanggal_login, tanggal_logout FROM (( tbl_log INNER JOIN tbl_login ON tbl_login.username = tbl_log.username) INNER JOIN tbl_petugas ON tbl_login.id_petugas = tbl_petugas.id_petugas)"
+        Dim adapter As New SqlClient.SqlDataAdapter(sql, conn)
         Dim dt As New DataTable
         adapter.Fill(dt)
 
@@ -33,9 +33,9 @@ Public Class LaporanLoginForm
         Dim posY As Integer = 10
         Dim offset As Integer = 40
 
-        gp.DrawString("     ** LAPORAN LOGIN FORM ** ", New Font("Courier New", 20), New SolidBrush(Color.Black), posX, posY)
+        gp.DrawString("         ** LAPORAN LOGIN FORM ** ", New Font("Courier New", 20), New SolidBrush(Color.Black), posX, posY)
         offset += fontHeight + 20
-        gp.DrawString("ID Log".PadRight(15) + "Nama Petugas".PadRight(15) + "Tanggal Login".PadRight(15) + "Tanggal Logout".PadRight(15), New Font("Courier New", 12), New SolidBrush(Color.Black), posX, posY + offset)
+        gp.DrawString("ID Log " + " Nama Petugas".PadRight(20) + "Tanggal Login".PadRight(30) + "Tanggal Logout".PadRight(30), New Font("Courier New", 12), New SolidBrush(Color.Black), posX, posY + offset)
         offset += fontHeight + 10
 
         Dim sql As String = "SELECT id_log ,  jabatan , nama_depan,nama_belakang, tanggal_login, tanggal_logout FROM (( tbl_log INNER JOIN tbl_login ON tbl_login.username = tbl_log.username) INNER JOIN tbl_petugas ON tbl_login.id_petugas = tbl_petugas.id_petugas)"
@@ -44,13 +44,13 @@ Public Class LaporanLoginForm
         rd = cmnd.ExecuteReader
         If rd.HasRows Then
             While rd.Read
-                Dim id As String = rd.Item("id_log").ToString.PadRight(15)
-                Dim nama As String = (rd.Item("nama_depan") + " " + rd.Item("nama_belakang")).ToString.PadRight(15)
-                Dim tanggal_login As String = rd.Item("tanggal_login").ToString.PadRight(15)
-                Dim tanggal_logout As String = rd.Item("tanggal_login").ToString.PadRight(15)
+                Dim id As String = rd.Item("id_log").ToString
+                Dim nama As String = (rd.Item("nama_depan") + " " + rd.Item("nama_belakang")).ToString.PadRight(20)
+                Dim tanggal_login As String = rd.Item("tanggal_login").ToString.PadRight(30)
+                Dim tanggal_logout As String = rd.Item("tanggal_login").ToString.PadRight(30)
                 Dim jabatan As String = rd.Item("jabatan").ToString
 
-                gp.DrawString(id + nama + tanggal_login + tanggal_logout + tanggal_login + jabatan, font, New SolidBrush(Color.Black), posX, posY + offset)
+                gp.DrawString(id + " " + nama + tanggal_login + tanggal_logout + tanggal_login + jabatan, font, New SolidBrush(Color.Black), posX, posY + offset)
 
                 offset += fontHeight + 5
             End While

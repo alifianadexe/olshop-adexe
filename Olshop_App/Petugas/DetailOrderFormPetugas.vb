@@ -131,7 +131,12 @@ Public Class DetailOrderFormPetugas
         Dim offset As Integer = 40
 
         gp.DrawString("    ** Selamat Datang Di Adexe Olshop ** ", New Font("Courier New", 20), New SolidBrush(Color.Black), startx, starty)
+        offset += fontheight + 20
+        gp.DrawString("---------Tempat Belanja Kita Semua-------- ", New Font("Courier New", 20), New SolidBrush(Color.Black), startx, starty + offset)
+        offset += fontheight + 20
 
+        gp.DrawString("Daftar Belanja : ", New Font("Courier New", 14), New SolidBrush(Color.Black), startx, starty + offset)
+        offset += fontheight + 10
         Dim sql As String = "SELECT tbl_det_order.id_barang as id_barang,kembalian, pembayaran, jumlah_barang, tbl_det_order.harga_barang, tbl_barang.harga_barang as [harga_barang] , tbl_det_order.harga_barang as [harga_total_barang], nama_barang,total_harga,tanggal_order, tbl_barang.picture as [picture] FROM ((tbl_order INNER JOIN tbl_det_order ON tbl_det_order.id_order = tbl_order.id_order) INNER JOIN tbl_barang ON tbl_barang.id_barang = tbl_det_order.id_barang)INNER JOIN tbl_terima ON tbl_terima.id_order = tbl_order.id_order  WHERE tbl_order.id_order = '" + Me.Tag + "'"
         Dim cmnd As New SqlClient.SqlCommand(sql, conn)
         rd = cmnd.ExecuteReader
@@ -143,9 +148,9 @@ Public Class DetailOrderFormPetugas
                 Dim nama_barang As String = rd.Item("nama_barang").ToString
                 Dim qty As String = " * " + rd.Item("jumlah_barang").ToString
                 Dim concatline As String = (nama_barang + qty)
-                concatline = concatline.PadRight(40)
+                concatline = concatline.PadRight(60)
 
-                Dim total_harga As String = "Rp." + Format(rd.Item("harga_total_barang"), "##,##0.00")
+                Dim total_harga As String = ("Rp." + Format(rd.Item("harga_total_barang"), "##,##0.00"))
                 Dim productline As String = concatline + total_harga
 
                 gp.DrawString(productline, font, New SolidBrush(Color.Black), startx, starty + offset)

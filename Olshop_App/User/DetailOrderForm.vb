@@ -33,7 +33,7 @@
     Private Sub data_grid_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles data_grid.CellClick
         If e.RowIndex >= 0 Then
             Dim id_barang = data_grid.Rows(e.RowIndex).Cells(0).Value.ToString
-            Dim sql As String = "SELECT tbl_det_order.id_barang as id_barang, jumlah_barang, tbl_det_order.harga_barang as [harga_total_barang], tbl_barang.harga_barang as [harga_barang] ,picture, nama_barang,total_harga,tanggal_order  FROM (tbl_order INNER JOIN tbl_det_order ON tbl_det_order.id_order = tbl_order.id_order) INNER JOIN tbl_barang ON tbl_barang.id_barang = tbl_det_order.id_barang WHERE tbl_det_order.id_barang = '" + id_barang + "'  "
+            Dim sql As String = "SELECT tbl_det_order.id_barang as id_barang, jumlah_barang, tbl_det_order.harga_barang as [harga_total_barang], tbl_barang.harga_barang as [harga_barang] ,picture, nama_barang,total_harga,tanggal_order  FROM (tbl_order INNER JOIN tbl_det_order ON tbl_det_order.id_order = tbl_order.id_order) INNER JOIN tbl_barang ON tbl_barang.id_barang = tbl_det_order.id_barang WHERE tbl_det_order.id_barang = '" + id_barang + "' AND tbl_order.id_order = '" + Me.Tag + "'"
             Dim cmnd As New SqlClient.SqlCommand(sql, conn)
             rd = cmnd.ExecuteReader
             rd.Read()
